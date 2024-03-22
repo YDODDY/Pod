@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "NierPod",
+			"Path": "..\\Source\\NierPod.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "NierPodEditor",
+			"Path": "..\\Source\\NierPodEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

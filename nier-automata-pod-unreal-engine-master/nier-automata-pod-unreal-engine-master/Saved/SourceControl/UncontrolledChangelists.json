@@ -1,0 +1,20 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/StarterContent/Architecture/Floor_400x400.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BP_BossEnemy.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BP_BossController.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BT_Boss.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BB_Boss.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/Tasks/BTTask_BlueprintBase_New.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/0Y/0TACR3M22DI755AYPALPIG.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BP_Boss.uasset",
+				"C:/Users/admin/Desktop/PodGit/Pod/nier-automata-pod-unreal-engine-master/nier-automata-pod-unreal-engine-master/Content/Boss/BP_BossController.uasset"
+			]
+		}
+	]
+}
