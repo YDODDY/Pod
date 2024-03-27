@@ -40,6 +40,10 @@ public:
 
 
 private:
+	FVector moveDir;
+
+	class AEnemy* FindEnemy_Iterator();
+
 
 	UFUNCTION()
 	void OnoverlapEnermy(UPrimitiveComponent* OverlappedComponent, AActor* otherActor, UPrimitiveComponent* OtherComp,

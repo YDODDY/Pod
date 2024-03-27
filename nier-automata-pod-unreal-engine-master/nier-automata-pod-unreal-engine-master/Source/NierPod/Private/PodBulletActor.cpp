@@ -5,6 +5,8 @@
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "EngineUtils.h"
+#include "Enemy.h"
 
 
 APodBulletActor::APodBulletActor()
@@ -34,6 +36,17 @@ void APodBulletActor::BeginPlay()
 {
 	Super::BeginPlay();
 	SphereComp->OnComponentBeginOverlap.AddDynamic(this, &APodBulletActor::OnoverlapEnermy);
+
+	AEnemy* enemy = FindEnemy_Iterator();
+	if (enemy != nullptr)
+	{
+		FVector lookDirection = enemy->GetActorLocation() - GetActorLocation();
+		moveDir = lookDirection.GetSafeNormal();
+	}
+	else
+	{
+		moveDir = GetActorForwardVector();
+	}
 	
 }
 
@@ -42,8 +55,9 @@ void APodBulletActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector targetLoc = GetActorLocation() + GetActorForwardVector() * Speed * DeltaTime;
+	FVector targetLoc = GetActorLocation() + moveDir* Speed * DeltaTime;
 	SetActorLocation(targetLoc);
+	
 
 
 }
@@ -61,3 +75,21 @@ void APodBulletActor::OnoverlapEnermy(UPrimitiveComponent* OverlappedComponent, 
 
 }
 
+AEnemy* APodBulletActor::FindEnemy_Iterator()
+{
+	TArray<AEnemy*> enemys;
+	for (TActorIterator<AEnemy> enemy(GetWorld()); enemy; ++enemy)
+	{
+		enemys.Add(*enemy);
+	}
+
+	if (enemys.Num() > 0)
+	{
+		return enemys[0];
+	}
+	else
+	{
+		return nullptr;
+	}
+
+}
