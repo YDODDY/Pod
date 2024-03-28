@@ -41,6 +41,9 @@ public:
 private:
 	FVector moveDir;
 
+	
+	bool bShouldStopMoving;
+	
 	class AEnemy* FindEnemy_Iterate();
 
 	UFUNCTION()

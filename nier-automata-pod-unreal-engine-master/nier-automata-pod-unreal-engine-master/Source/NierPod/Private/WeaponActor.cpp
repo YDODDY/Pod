@@ -16,16 +16,17 @@ AWeaponActor::AWeaponActor()
 
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Comp"));
 	SetRootComponent(BoxComp);
-	BoxComp->SetWorldScale3D(FVector(0.3, 0.3, 2));
+	BoxComp->SetWorldScale3D(FVector(1, 1, 2));
 	BoxComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoxComp->SetCollisionObjectType(ECC_GameTraceChannel1);
 	BoxComp->SetCollisionResponseToAllChannels(ECR_Ignore);
 	BoxComp->SetCollisionResponseToChannel(ECC_GameTraceChannel2, ECR_Overlap);
 	BoxComp->SetGenerateOverlapEvents(true);
 	
+	
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Weapon"));
 	meshComp->SetupAttachment(BoxComp);
-	meshComp->SetWorldScale3D(FVector(1, 1, 0.24));
+	meshComp->SetWorldScale3D(FVector(0.6, 0.6, 0.35));
 	meshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
@@ -52,8 +53,12 @@ void AWeaponActor::BeginPlay()
 void AWeaponActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	FVector targetLoc = GetActorLocation() + moveDir * Speed * DeltaTime;
-	SetActorLocation(targetLoc);
+	
+	if (!bShouldStopMoving)
+	{
+		FVector targetLoc = GetActorLocation() + moveDir * Speed * DeltaTime;
+		SetActorLocation(targetLoc);
+	}
 
 }
 
@@ -87,6 +92,7 @@ void AWeaponActor::OnoverlapEnemy(UPrimitiveComponent* OverlappedComponent, AAct
 	}
 	UE_LOG(LogTemp, Warning, TEXT("Weaponnnnn"));
 	
+	bShouldStopMoving = true;
 
 }
 
