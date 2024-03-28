@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "WeaponActor.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -8,32 +5,33 @@
 #include "EngineUtils.h"
 #include "Enemy.h"
 
-// Sets default values
+
 AWeaponActor::AWeaponActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+
 	PrimaryActorTick.bCanEverTick = true;
 
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Comp"));
 	SetRootComponent(BoxComp);
-	BoxComp->SetWorldScale3D(FVector(1, 1, 2));
+	BoxComp->SetRelativeScale3D(FVector(1, 2, 0.3));
 	BoxComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoxComp->SetCollisionObjectType(ECC_GameTraceChannel1);
 	BoxComp->SetCollisionResponseToAllChannels(ECR_Ignore);
 	BoxComp->SetCollisionResponseToChannel(ECC_GameTraceChannel2, ECR_Overlap);
 	BoxComp->SetGenerateOverlapEvents(true);
+	BoxComp->SetRelativeRotation(FRotator(0,0,-90));
 	
 	
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Weapon"));
 	meshComp->SetupAttachment(BoxComp);
-	meshComp->SetWorldScale3D(FVector(0.6, 0.6, 0.35));
+	meshComp->SetRelativeScale3D(FVector(0.6, 0.6, 0.35));
 	meshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
-// Called when the game starts or when spawned
 void AWeaponActor::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	
 	BoxComp->OnComponentBeginOverlap.AddDynamic(this, &AWeaponActor::OnoverlapEnemy);
 
@@ -45,14 +43,19 @@ void AWeaponActor::BeginPlay()
 	}
 	else
 	{
-		moveDir = GetActorForwardVector();
+		
+		Destroy();
 	}
+
+	SetLifeSpan(1.0f);
 }
 
-// Called every frame
+
 void AWeaponActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	
 	
 	if (!bShouldStopMoving)
 	{
@@ -61,7 +64,6 @@ void AWeaponActor::Tick(float DeltaTime)
 	}
 
 }
-
 
 
 AEnemy* AWeaponActor::FindEnemy_Iterate()
