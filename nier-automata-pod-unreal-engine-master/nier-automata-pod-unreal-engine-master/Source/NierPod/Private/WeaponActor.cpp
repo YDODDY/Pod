@@ -87,6 +87,7 @@ AEnemy* AWeaponActor::FindEnemy_Iterate()
 void AWeaponActor::OnoverlapEnemy(UPrimitiveComponent* OverlappedComponent, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherbodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), explosionFX, otherActor->GetActorLocation(), FRotator::ZeroRotator);
+	
 
 	if (explosionSound != nullptr)
 	{
