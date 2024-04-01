@@ -57,7 +57,7 @@ void APodBulletActor::Tick(float DeltaTime)
 
 	FVector targetLoc = GetActorLocation() + moveDir* Speed * DeltaTime;
 	SetActorLocation(targetLoc);
-	UE_LOG(LogTemp, Warning, TEXT("Shoot~"));
+	//UE_LOG(LogTemp, Warning, TEXT("Shoot~"));
 
 
 }
