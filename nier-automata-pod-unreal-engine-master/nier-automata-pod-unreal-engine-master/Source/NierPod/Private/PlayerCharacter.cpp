@@ -123,8 +123,21 @@ void APlayerCharacter::Jump()
   	//플레이어 전방 공격범위 변수 
   	FVector attackRange = GetActorLocation() + GetActorForwardVector() * 100.0f;
   
-  	UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), GetActorLocation(), attackRange, 20.0f, enemy, false, ignore, EDrawDebugTrace::ForDuration, bossHit, true, FLinearColor::Red, FLinearColor::Blue, 1.0f);
+  	bool bResult = UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), GetActorLocation(), attackRange, 20.0f, enemy, false, ignore, EDrawDebugTrace::ForDuration, bossHit, true, FLinearColor::Red, FLinearColor::Blue, 1.0f);
   
+	if (bResult)
+	{
+		for (int32 i = 0; i < bossHit.Num(); i++)
+		{
+			AC_BossCharacter* boss = Cast<AC_BossCharacter>(bossHit[i].GetActor());
+			if (boss != nullptr)
+			{
+				boss->Attacked();
+				break;
+			}
+		}
+	}
+
   	UE_LOG(LogTemp, Warning, TEXT("Attack"));
   
   

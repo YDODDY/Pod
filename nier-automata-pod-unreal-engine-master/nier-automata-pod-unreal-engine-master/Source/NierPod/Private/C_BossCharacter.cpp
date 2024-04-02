@@ -40,6 +40,14 @@ void AC_BossCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+void AC_BossCharacter::Attacked()
+{
+	
+	bossHealth = bossHealth - 10.0f;
+
+	UE_LOG(LogTemp, Warning, TEXT("BossHealth : %f"),bossHealth);
+}
+
 
 
 

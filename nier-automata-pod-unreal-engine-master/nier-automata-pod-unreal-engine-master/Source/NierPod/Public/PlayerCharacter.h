@@ -39,9 +39,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = "PlayerSettings")
 	float playerHealth = 1000.0f;
 
-	//플레이어 데미지
-	UPROPERTY(EditAnywhere, Category = "PlayerSettings")
-	float playerDamage = 10.0f;
 
 
 

@@ -44,6 +44,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BossSettings")
 	float bossDamage = 10.0f;
 
-
+	//피격받는 함수
+	UFUNCTION()
+	void Attacked();
 
 };
