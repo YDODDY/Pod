@@ -2,7 +2,6 @@
 
 
 #include "C_BossCharacter.h"
-#include "Components/CapsuleComponent.h"
 #include "PlayerCharacter.h"
 
 
@@ -12,10 +11,7 @@ AC_BossCharacter::AC_BossCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//°ø°Ý°¨Áö Ä¸½¶¹üÀ§
-	capsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
-	SetRootComponent(capsuleComp);
-	capsuleComp -> SetCapsuleSize(40.0f,80.0f, true);
+
 	
 }
 
