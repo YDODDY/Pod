@@ -2,12 +2,15 @@
 
 
 #include "AICharacter.h"
-
+#include "AllyAIController.h"
 
 AAICharacter::AAICharacter()
 {
  
 	PrimaryActorTick.bCanEverTick = true;
+
+	AIControllerClass = AAllyAIController::StaticClass();
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 
 }
 
